@@ -9,7 +9,7 @@ const Home = () => {
         {/* Usamos la imagen de la familia en el sofá */}
         <img 
           src="./src/img/logo.png" 
-          alt="Familia Simpson" 
+          alt="Familia Simpsons" 
           className="hero-image"
         />
 
