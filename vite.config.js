@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/ApiSimpsons_2025IIg1_Leon_Jhojan_Ramirez_Javier/', 
+  base: '/ApiSimpons_2025IIg1_Leon_Jhojan_Ramirez_Javier/'
 })
