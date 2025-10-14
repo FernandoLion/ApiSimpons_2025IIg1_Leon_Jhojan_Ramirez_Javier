@@ -24,6 +24,6 @@
 }
 
 .nav-btn-simpsons:hover {
-    background-color: #ffc107; /* Amarillo Simpsons */
-    color: #333; /* Texto oscuro al pasar el mouse */
+  background-color: var(--simpsons-yellow); /* Usamos la variable */
+  color: var(--dark-text);
 }

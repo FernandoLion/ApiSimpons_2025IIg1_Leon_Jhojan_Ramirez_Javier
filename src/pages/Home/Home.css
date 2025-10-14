@@ -1,0 +1,61 @@
+/* src/pages/Home/Home.css */
+
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 85vh; /* Ocupa la mayor parte de la pantalla */
+  padding: 20px;
+}
+
+.home-content {
+  background-color: rgba(255, 255, 255, 0.9); /* Un poco más transparente */
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  max-width: 700px; /* Hacemos la tarjeta más angosta */
+  width: 100%;
+  
+  /* Centra todo el contenido de la tarjeta */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-image {
+  max-width: 450px; /* Ajustamos el tamaño de la imagen */
+  width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+  /* Mantenemos la animación sutil */
+  animation: float 6s ease-in-out infinite;
+}
+
+.welcome-title {
+  color: #ffc107; /* Amarillo Simpsons */
+  text-shadow: 2px 2px 2px #333;
+  font-size: 2.8em; /* Ajustamos el tamaño del título */
+  margin: 0;
+}
+
+.welcome-text {
+  color: #333;
+  font-family: sans-serif; /* Usamos una fuente más legible para el párrafo */
+  font-size: 1.2em;
+  margin-top: 15px;
+  max-width: 500px; /* Hacemos el texto más angosto */
+}
+
+/* Animación de flotar */
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-15px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}

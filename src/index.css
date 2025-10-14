@@ -1,12 +1,33 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f0f0f0; 
+/* src/index.css */
+.sky-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Usamos la imagen que encontraste */
+  background-image: url('https://thesimpsonsapi.com/clouds-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
 }
+
+:root {
+  --simpsons-yellow: #ffd90f;
+  --simpsons-red: #d82228;
+  --simpsons-blue: #75cffc;
+  --dark-text: #333;
+}
+
+/* Hacemos que el contenedor de React (#root) no sea afectado por las capas */
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* === FIN: FONDO ANIMADO Y TIPOGRAFÍA === */
+
+
 
 /* 👇 ASEGÚRATE DE QUE ESTA CLASE EXISTA Y ESTÉ BIEN ESCRITA 👇 */
 .character-grid {
@@ -20,4 +41,27 @@ body {
 
 .app-content-padding {
   padding: 20px;
+}
+
+
+.airplane-layer {
+  position: absolute;
+  top: 15%; /* Altura a la que vuela */
+  width: 200px; /* Ancho del avión */
+  height: 100px; /* Alto del avión */
+  background-image: url('https://www.freeiconspng.com/uploads/airplane-png-25.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: fly-across 15s linear infinite; /* La animación */
+  animation-delay: -5s; /* Empieza a mitad de camino */
+}
+
+/* Animación que mueve el avión */
+@keyframes fly-across {
+  0% { 
+    transform: translateX(-250px); /* Empieza fuera de la pantalla a la izquierda */
+  }
+  100% {
+    transform: translateX(100vw); /* Termina fuera de la pantalla a la derecha */
+  }
 }

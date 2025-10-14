@@ -40,29 +40,42 @@
 }
 
 .card-flip-back {
-  background-color: #ffc107;
-  color: black;
+  background-color: var(--simpsons-yellow); /* Usamos la variable */
+  color: var(--dark-text);
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
-.card-image {
+/* 👇 AÑADIMOS LA REGLA PARA EL NUEVO CONTENEDOR 👇 */
+.card-image-container {
   width: 100%;
   height: 250px;
-  object-fit: cover;
+  background-color: #75cffc; /* Azul cielo de Los Simpsons */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+}
+
+/* 👇 MODIFICAMOS LA REGLA DE LA IMAGEN 👇 */
+.card-image {
+  max-width: 100%;
+  max-height: 100%; /* La imagen no puede ser más alta que su contenedor */
+  object-fit: contain; /* <-- ESTE ES EL CAMBIO CLAVE */
+  display: block;
 }
 
 .card-name {
   padding: 10px;
   margin: 0;
   font-size: 1.1em;
+  background-color: #fff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
-
 .back-content {
   padding: 15px;
 }
