@@ -1,0 +1,29 @@
+.navbar-wrapper {
+    padding: 10px 0;
+}
+
+.navbar-simpsons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 50px; /* Bordes súper redondeados para el efecto de píldora */
+    width: max-content; /* El ancho se ajusta al contenido */
+    margin: auto; /* Centra la barra de navegación en la página */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.nav-btn-simpsons {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-btn-simpsons:hover {
+    background-color: #ffc107; /* Amarillo Simpsons */
+    color: #333; /* Texto oscuro al pasar el mouse */
+}

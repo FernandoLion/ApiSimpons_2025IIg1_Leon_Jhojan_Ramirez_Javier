@@ -1,0 +1,35 @@
+/* src/components/Pagination/Pagination.css */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+  gap: 10px;
+}
+
+.pagination-button {
+  padding: 10px 20px;
+  background-color: #ffc107; /* Amarillo Simpsons */
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: #f0b400; /* Amarillo más oscuro al pasar el mouse */
+}
+
+/* Estilo para el botón cuando está deshabilitado */
+.pagination-button:disabled {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+  color: #6c757d;
+}
+
+.pagination-info {
+  font-size: 1.2em;
+  font-weight: bold;
+}
