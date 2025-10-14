@@ -1,0 +1,90 @@
+    /* ESTILOS PARA LA TARJETA CON EFECTO DE GIRO (FLIP CARD) */
+.card-flip-container {
+  background-color: transparent;
+  width: 220px;
+  height: 320px;
+  perspective: 1000px;
+  margin: auto;
+}
+
+.card-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 10px;
+}
+
+.card-flip-container:hover .card-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.card-flip-front, .card-flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 10px;
+}
+
+.card-flip-front {
+  background-color: #fff;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-flip-back {
+  background-color: #ffc107;
+  color: black;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-name {
+  padding: 10px;
+  margin: 0;
+  font-size: 1.1em;
+}
+
+.back-content {
+  padding: 15px;
+}
+
+.back-occupation {
+  font-size: 1em;
+  font-style: italic;
+}
+
+.details-button {
+  background-color: #333;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-top: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s;
+}
+
+.details-button:hover {
+  background-color: #555;
+}

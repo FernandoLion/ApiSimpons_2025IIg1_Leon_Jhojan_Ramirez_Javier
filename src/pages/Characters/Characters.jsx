@@ -1,65 +1,91 @@
-// src/pages/Characters/Characters.jsx
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom'; // Importamos para manejar la URL
+import { useSearchParams } from 'react-router-dom';
 import CharacterCard from '../../components/CharacterCard/CharacterCard';
 import Loader from '../../components/Loader/Loader';
-import Pagination from '../../components/Pagination/Pagination'; // 1. Importamos Pagination
+import Pagination from '../../components/Pagination/Pagination';
 
 const API_BASE_URL = 'https://thesimpsonsapi.com/api/characters';
 
 const Characters = () => {
-    const [characters, setCharacters] = useState([]);
-    const [totalPages, setTotalPages] = useState(1); // 2. Añadimos estado para el total de páginas
+    // ESTADOS
+    const [allCharacters, setAllCharacters] = useState([]); // Guarda la lista original de 20 personajes
+    const [filteredCharacters, setFilteredCharacters] = useState([]); // Guarda la lista que se va a mostrar
+    const [searchTerm, setSearchTerm] = useState(''); // Guarda el texto del buscador
+    
+    const [totalPages, setTotalPages] = useState(1);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     const [searchParams, setSearchParams] = useSearchParams();
     const currentPage = parseInt(searchParams.get('page')) || 1; 
 
-    // 3. Modificamos el useEffect para que dependa de la página actual
+    // --- EFECTO 1: SOLO PARA BUSCAR DATOS DE LA API ---
+    // Este useEffect se ejecuta solo cuando cambia la página.
     useEffect(() => {
         const fetchCharacters = async (page) => {
             setLoading(true);
             setError(null);
             try {
-                // Añadimos el parámetro "page" a la URL de la API
-                const response = await fetch(`${API_BASE_URL}?page=${page}`);
-                if (!response.ok) {
-                    throw new Error('Error al obtener la información.');
-                }
+                const url = `${API_BASE_URL}?page=${page}`;
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Error al obtener la información.');
+                
                 const data = await response.json();
-                setCharacters(data.results);
-                setTotalPages(data.pages); // La API nos dice cuántas páginas hay
+                setAllCharacters(data.results); // Guardamos la lista original
+                setFilteredCharacters(data.results); // Y la mostramos por defecto
+                setTotalPages(data.pages);
             } catch (err) {
                 setError(err.message);
             } finally {
                 setLoading(false);
             }
         };
-
         fetchCharacters(currentPage);
-    }, [currentPage]); // Se ejecutará cada vez que currentPage cambie
+    }, [currentPage]);
 
-    // 4. Función para manejar el cambio de página
+    // --- EFECTO 2: SOLO PARA FILTRAR LOS DATOS QUE YA TENEMOS ---
+    // Este useEffect se ejecuta solo cuando el usuario escribe en el buscador.
+    useEffect(() => {
+        const results = allCharacters.filter(character =>
+            character.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setFilteredCharacters(results);
+    }, [searchTerm, allCharacters]);
+
     const handlePageChange = (newPage) => {
         if (newPage > 0 && newPage <= totalPages) {
+            setSearchTerm(''); // Limpiamos la búsqueda al cambiar de página
             setSearchParams({ page: newPage });
         }
     };
-
+    
     if (loading) return <Loader />;
-    if (error) return <div style={{ padding: '20px', color: 'red' }}>Error: {error}</div>;
+    if (error) return <div className="error-message">{error}</div>;
 
     return (
         <div className="app-content-padding">
             <h1>Lista de Personajes</h1>
+            <div className="filters-container">
+                <input
+                    type="text"
+                    placeholder="Filtrar personajes en esta página..."
+                    className="search-input"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+            </div>
+            
+            {filteredCharacters.length === 0 && !loading && (
+                <p className="info-message">No se encontraron personajes con ese nombre en esta página.</p>
+            )}
+
             <div className="character-grid">
-                {characters.map(character => (
+                {/* Ahora mapeamos la lista FILTRADA */}
+                {filteredCharacters.map(character => (
                     <CharacterCard key={character.id} character={character} />
                 ))}
             </div>
             
-            {/* 5. Añadimos el componente Pagination y le pasamos las órdenes */}
             <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
