@@ -6,6 +6,7 @@ import Locations from './pages/Locations/Locations';
 import Episodes from './pages/Episodes/Episodes';
 import Navbar from './components/Navbar/Navbar';
 import CharacterDetail from './pages/CharacterDetail/CharacterDetail';
+import VideoPlayer from './pages/VideoPlayer/VideoPlayer';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/lugares" element={<Locations />} />
         <Route path="/episodios" element={<Episodes />} />
         <Route path="/personaje/:id" element={<CharacterDetail />} />
+        <Route path="/video" element={<VideoPlayer />} /> {/* 👈 NUEVO */}
         
         {/* La ruta comodín debe apuntar a la página de inicio */}
         <Route path="*" element={<Home />} /> 
