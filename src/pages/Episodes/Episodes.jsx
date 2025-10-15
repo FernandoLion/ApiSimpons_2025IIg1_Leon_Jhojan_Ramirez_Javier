@@ -31,10 +31,12 @@ const Episodes = () => {
                 if (!response.ok) throw new Error('Error al cargar los episodios.');
                 
                 const data = await response.json();
+                console.log(`🎬 Episodios cargados: ${data.results.length} ítems.`);
                 setAllEpisodes(data.results || []);
                 setFilteredEpisodes(data.results || []);
                 setTotalPages(data.pages || 1);
             } catch (err) {
+                console.error('❌ Error al cargar episodios:', err);
                 setError(err.message);
             } finally {
                 setLoading(false);

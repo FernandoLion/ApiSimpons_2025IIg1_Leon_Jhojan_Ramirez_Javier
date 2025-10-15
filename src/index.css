@@ -164,7 +164,6 @@
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
-/* Mensaje de información cuando no hay resultados */
 .info-message {
   text-align: center;
   font-size: 1.2em;
@@ -173,13 +172,11 @@
   font-weight: 600;
 }
 
-/* Padding del contenido principal */
 .app-content-padding {
   padding: 20px;
   min-height: calc(100vh - 100px);
 }
 
-/* Títulos de las páginas */
 .app-content-padding h1 {
   text-align: center;
   color: #333;

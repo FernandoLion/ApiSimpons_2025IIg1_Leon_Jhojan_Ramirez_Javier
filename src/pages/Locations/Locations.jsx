@@ -30,10 +30,12 @@ const Locations = () => {
                 if (!response.ok) throw new Error('Error al cargar los lugares.');
                 
                 const data = await response.json();
+                console.log(`📍 Lugares cargados: ${data.results.length} ítems. (API Original)`);
                 setAllLocations(data.results || []);
                 setFilteredLocations(data.results || []);
                 setTotalPages(data.pages || 1);
             } catch (err) {
+                console.error('❌ Error al cargar lugares:', error);
                 setError(err.message);
             } finally {
                 setLoading(false);

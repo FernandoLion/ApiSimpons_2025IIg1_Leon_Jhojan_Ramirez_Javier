@@ -7,10 +7,9 @@ import Pagination from '../../components/Pagination/Pagination';
 const API_BASE_URL = 'https://thesimpsonsapi.com/api/characters';
 
 const Characters = () => {
-    // ESTADOS
-    const [allCharacters, setAllCharacters] = useState([]); // Guarda la lista original de 20 personajes
-    const [filteredCharacters, setFilteredCharacters] = useState([]); // Guarda la lista que se va a mostrar
-    const [searchTerm, setSearchTerm] = useState(''); // Guarda el texto del buscador
+    const [allCharacters, setAllCharacters] = useState([]); 
+    const [filteredCharacters, setFilteredCharacters] = useState([]);
+    const [searchTerm, setSearchTerm] = useState(''); 
     
     const [totalPages, setTotalPages] = useState(1);
     const [loading, setLoading] = useState(true);
@@ -19,8 +18,6 @@ const Characters = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const currentPage = parseInt(searchParams.get('page')) || 1; 
 
-    // --- EFECTO 1: SOLO PARA BUSCAR DATOS DE LA API ---
-    // Este useEffect se ejecuta solo cuando cambia la página.
     useEffect(() => {
         const fetchCharacters = async (page) => {
             setLoading(true);
@@ -31,10 +28,12 @@ const Characters = () => {
                 if (!response.ok) throw new Error('Error al obtener la información.');
                 
                 const data = await response.json();
-                setAllCharacters(data.results); // Guardamos la lista original
-                setFilteredCharacters(data.results); // Y la mostramos por defecto
+                console.log(`✅ Personajes cargados: ${data.results.length} ítems.`);
+                setAllCharacters(data.results); 
+                setFilteredCharacters(data.results); 
                 setTotalPages(data.pages);
             } catch (err) {
+                console.error('❌ Error al cargar personajes:', error);
                 setError(err.message);
             } finally {
                 setLoading(false);
