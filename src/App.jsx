@@ -1,5 +1,5 @@
 // src/App.jsx
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom'; // 👈 CAMBIO AQUÍ
 import Home from './pages/Home/Home';
 import Characters from './pages/Characters/Characters';
 import Locations from './pages/Locations/Locations';
@@ -10,9 +10,8 @@ import VideoPlayer from './pages/VideoPlayer/VideoPlayer';
 
 function App() {
   return (
-    // 👇 ESTE ES EL CAMBIO MÁS ROBUSTO Y RECOMENDADO 👇
-    // Le decimos al Router que use la variable de entorno BASE_URL que Vite define.
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    // 👇 Cambiamos BrowserRouter por HashRouter
+    <HashRouter>
       <Navbar /> 
 
       <Routes>
@@ -21,12 +20,12 @@ function App() {
         <Route path="/lugares" element={<Locations />} />
         <Route path="/episodios" element={<Episodes />} />
         <Route path="/personaje/:id" element={<CharacterDetail />} />
-        <Route path="/video" element={<VideoPlayer />} /> {/* 👈 NUEVO */}
+        <Route path="/video" element={<VideoPlayer />} />
         
-        {/* La ruta comodín debe apuntar a la página de inicio */}
+        {/* La ruta comodín sigue funcionando */}
         <Route path="*" element={<Home />} /> 
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
