@@ -98,7 +98,7 @@ const Episodes = () => {
                 <p className="info-message">No se encontraron episodios con esos filtros en esta página.</p>
             )}
 
-            <div className="character-grid">
+            <div className="episodes-grid">
                 {filteredEpisodes.map(episode => (
                     <EpisodeCard key={episode.id} episode={episode} />
                 ))}

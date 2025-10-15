@@ -1,37 +1,49 @@
 // src/components/LocationsCard/LocationsCard.jsx
 import React from 'react';
-// ¡Vamos a reutilizar el CSS de CharacterCard para no repetir código!
-import '../CharacterCard/CharacterCard.css'; 
+import './LocationsCard.css';
 
 const LocationsCard = ({ location }) => {
-  // AQUÍ ESTÁ LA CORRECCIÓN: Añadimos el tamaño "1280" a la URL
   const imageUrl = `https://cdn.thesimpsonsapi.com/1280${location.image_path}`;
 
   const handleImageError = (e) => {
-    e.target.src = 'https://placehold.co/300x200/75cffc/333?text=Lugar+no+disponible';
+    e.target.src = 'https://placehold.co/400x300/75cffc/333?text=Lugar+no+disponible';
   };
 
   return (
-    <div className="card-flip-container">
-      <div className="card-flip-inner">
-        {/* LADO FRONTAL */}
-        <div className="card-flip-front">
-          <div className="card-image-container">
-            <img
-              src={imageUrl}
-              alt={location.name}
-              className="card-image"
-              onError={handleImageError}
-            />
+    <div className="location-card">
+      {/* Imagen del lugar */}
+      <div className="location-image-container">
+        <img
+          src={imageUrl}
+          alt={location.name}
+          className="location-image"
+          onError={handleImageError}
+        />
+      </div>
+
+      {/* Contenido del lugar */}
+      <div className="location-content">
+        {/* Título del lugar */}
+        <h3 className="location-title">{location.name}</h3>
+
+        {/* Información detallada */}
+        <div className="location-info">
+          <div className="location-detail">
+            <span className="location-label">📍 Pueblo:</span>
+            <span className="location-value">{location.town}</span>
           </div>
-          <h3 className="card-name">{location.name}</h3>
+          
+          <div className="location-detail">
+            <span className="location-label">🏢 Uso:</span>
+            <span className="location-value">{location.use}</span>
+          </div>
         </div>
-        {/* LADO TRASERO */}
-        <div className="card-flip-back">
-          <div className="back-content">
-            <p className="back-occupation"><strong>Pueblo:</strong> {location.town}</p>
-            <p className="back-occupation"><strong>Uso:</strong> {location.use}</p>
-          </div>
+
+        {/* Badge del pueblo */}
+        <div style={{ textAlign: 'center' }}>
+          <span className="location-town-badge">
+            {location.town}
+          </span>
         </div>
       </div>
     </div>

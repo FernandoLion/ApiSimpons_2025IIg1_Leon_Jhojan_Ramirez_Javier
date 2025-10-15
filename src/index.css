@@ -29,16 +29,6 @@
 
 
 
-/* 👇 ASEGÚRATE DE QUE ESTA CLASE EXISTA Y ESTÉ BIEN ESCRITA 👇 */
-.character-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.5rem;
-  padding: 1.5rem;
-  max-width: 1200px;
-  margin: auto;
-}
-
 .app-content-padding {
   padding: 20px;
 }
@@ -83,4 +73,117 @@
   color: var(--dark-text);
   font-size: 1.5em;
   padding: 20px;
+}
+
+/* ESTILOS PARA LOS DIFERENTES GRIDS */
+
+/* Grid para PERSONAJES (tarjetas de 220px) */
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1300px;
+  margin: auto;
+  justify-items: center;
+}
+
+/* Grid para EPISODIOS (tarjetas de 280px) */
+.episodes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.5rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: auto;
+  justify-items: center;
+}
+
+/* Grid para LUGARES (tarjetas de 320px) */
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2.5rem;
+  padding: 2rem;
+  max-width: 1500px;
+  margin: auto;
+  justify-items: center;
+}
+
+/* Para pantallas medianas */
+@media (max-width: 1024px) {
+  .character-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.8rem;
+  }
+  
+  .episodes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  
+  .locations-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+}
+
+/* Para móviles */
+@media (max-width: 768px) {
+  .character-grid,
+  .episodes-grid,
+  .locations-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+}
+
+/* Contenedor de filtros */
+.filters-container {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  padding: 0 20px;
+}
+
+.search-input {
+  padding: 12px 20px;
+  font-size: 1em;
+  border: 2px solid #ffd700;
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.3s ease;
+  min-width: 250px;
+}
+
+.search-input:focus {
+  border-color: #ff6b6b;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Mensaje de información cuando no hay resultados */
+.info-message {
+  text-align: center;
+  font-size: 1.2em;
+  color: #666;
+  padding: 40px 20px;
+  font-weight: 600;
+}
+
+/* Padding del contenido principal */
+.app-content-padding {
+  padding: 20px;
+  min-height: calc(100vh - 100px);
+}
+
+/* Títulos de las páginas */
+.app-content-padding h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }

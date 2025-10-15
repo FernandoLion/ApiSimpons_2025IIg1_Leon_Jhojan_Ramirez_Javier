@@ -7,14 +7,14 @@ const CharacterCard = ({ character }) => {
   const imageUrl = `https://cdn.thesimpsonsapi.com/500/character/${character.id}.webp`;
 
   const handleImageError = (e) => {
-    e.target.src = 'https://placehold.co/200x300/fdf37a/333?text=Imagen+no+disponible';
+    e.target.src = 'https://placehold.co/300x350/fdf37a/333?text=Imagen+no+disponible';
   };
 
   return (
     <div className="card-flip-container">
       <div className="card-flip-inner">
+        {/* LADO FRONTAL - Imagen y nombre */}
         <div className="card-flip-front">
-          {/* 👇 AÑADIMOS ESTE CONTENEDOR PARA LA IMAGEN 👇 */}
           <div className="card-image-container">
             <img
               src={imageUrl}
@@ -22,12 +22,17 @@ const CharacterCard = ({ character }) => {
               className="card-image"
               onError={handleImageError}
             />
+            <span className="flip-hint">🔄 Hover</span>
           </div>
           <h3 className="card-name">{character.name}</h3>
         </div>
+
+        {/* LADO TRASERO - Ocupación y botón de detalles */}
         <div className="card-flip-back">
           <div className="back-content">
-            <p className="back-text back-occupation">{character.occupation}</p>
+            <p className="back-occupation">
+              {character.occupation || 'Ocupación desconocida'}
+            </p>
             <Link to={`/personaje/${character.id}`}>
               <button className="details-button">
                 Ver Detalles

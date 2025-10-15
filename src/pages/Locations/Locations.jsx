@@ -77,7 +77,7 @@ const Locations = () => {
                 <p className="info-message">No se encontraron lugares con ese nombre en esta página.</p>
             )}
             
-            <div className="character-grid">
+            <div className="locations-grid">
                 {filteredLocations.map(location => (
                     <LocationCard key={location.id} location={location} />
                 ))}

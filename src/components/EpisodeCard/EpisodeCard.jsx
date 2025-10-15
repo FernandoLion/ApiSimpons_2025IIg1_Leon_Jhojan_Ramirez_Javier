@@ -1,42 +1,73 @@
 // src/components/EpisodeCard/EpisodeCard.jsx
 import React from 'react';
-// Reutilizamos el CSS de CharacterCard para no repetir código
-import '../CharacterCard/CharacterCard.css'; 
+import './EpisodeCard.css';
 
 const EpisodeCard = ({ episode }) => {
   const imageUrl = `https://cdn.thesimpsonsapi.com/200${episode.image_path}`;
 
   const handleImageError = (e) => {
-    e.target.src = 'https://placehold.co/200x300/75cffc/333?text=Episodio+no+disponible';
+    e.target.src = 'https://placehold.co/400x250/75cffc/333?text=Episodio+no+disponible';
   };
 
+  // Formatear la fecha de forma más legible
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const date = new Date(dateString);
+    return date.toLocaleDateString('es-ES', options);
+  };
+
+  // Si hay descripción, la usamos. Si no, usamos un texto alternativo
+  const description = episode.description || episode.synopsis || 
+    `Episodio ${episode.episode_number} de la temporada ${episode.season}. Una aventura más de la familia más famosa de Springfield.`;
+
   return (
-    <div className="card-flip-container">
-      <div className="card-flip-inner">
-        {/* LADO FRONTAL */}
-        <div className="card-flip-front">
-          <div className="card-image-container">
+    <div className="episode-card-flip-container">
+      <div className="episode-card-flip-inner">
+        
+        {/* LADO FRONTAL - Imagen, título y badges */}
+        <div className="episode-card-flip-front">
+          {/* Imagen del episodio */}
+          <div className="episode-image-container">
             <img
               src={imageUrl}
               alt={episode.name}
-              className="card-image"
+              className="episode-image"
               onError={handleImageError}
             />
+            <span className="episode-flip-hint">🔄 Hover</span>
           </div>
-          <h3 className="card-name">{episode.name}</h3>
-        </div>
-        {/* LADO TRASERO */}
-        <div className="card-flip-back">
-          <div className="back-content">
-            <p className="back-occupation"><strong>Temporada:</strong> {episode.season}</p>
-            <p className="back-occupation"><strong>Episodio:</strong> {episode.episode_number}</p>
-            <p className="back-occupation"><strong>Fecha:</strong> {episode.airdate}</p>
+
+          {/* Contenido frontal */}
+          <div className="episode-front-content">
+            {/* Título con estilo llamativo */}
+            <h3 className="episode-title">{episode.name}</h3>
+
+            {/* Badges de temporada y episodio */}
+            <div className="episode-badges">
+              <span className="episode-badge badge-season">T{episode.season}</span>
+              <span className="episode-badge badge-episode">Ep {episode.episode_number}</span>
+            </div>
           </div>
         </div>
+
+        {/* LADO TRASERO - Descripción completa y fecha */}
+        <div className="episode-card-flip-back">
+          <div className="episode-back-content">
+            {/* Descripción completa */}
+            <div className="episode-description-back">
+              {description}
+            </div>
+
+            {/* Fecha de emisión */}
+            <div className="episode-airdate-back">
+              📅 Emitido: {formatDate(episode.airdate)}
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );
 };
 
-// 👇 ESTA ES LA LÍNEA CRUCIAL QUE PROBABLEMENTE FALTABA 👇
 export default EpisodeCard;

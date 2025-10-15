@@ -1,6 +1,7 @@
 // src/pages/Home/Home.jsx
 import React from 'react';
 import './Home.css'; // Importamos sus estilos
+import logoSimpsons from '../../assets/images/logo.png';
 
 const Home = () => {
   return (
@@ -8,8 +9,8 @@ const Home = () => {
       <div className="home-content">
         {/* Usamos la imagen de la familia en el sofá */}
         <img 
-          src="./src/img/logo.png" 
-          alt="Familia Simpsons" 
+          src={logoSimpsons}          
+          alt="Familia Simsons" 
           className="hero-image"
         />
 

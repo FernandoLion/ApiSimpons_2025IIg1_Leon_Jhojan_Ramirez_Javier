@@ -1,0 +1,238 @@
+/* ESTILOS PARA LA PÁGINA DE DETALLE DE PERSONAJE */
+
+.detail-container {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 0;
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header del personaje */
+.detail-header {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+  padding: 40px 30px;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 4px solid #f0c030;
+}
+
+.detail-title {
+  text-align: center;
+  color: #333;
+  margin: 0;
+  font-size: 2.5em;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 
+    3px 3px 0px rgba(255, 255, 255, 0.5),
+    -1px -1px 0px rgba(255, 255, 255, 0.3);
+}
+
+/* Contenido principal */
+.detail-content {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  padding: 40px;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border: 4px solid #f0c030;
+  border-top: none;
+}
+
+/* Layout de dos columnas */
+.detail-layout {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Columna izquierda - Imagen y datos básicos */
+.detail-left-column {
+  flex: 1 1 350px;
+  max-width: 400px;
+}
+
+.detail-image-container {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 5px solid #ffd700;
+  background: linear-gradient(135deg, #75cffc 0%, #5eb8e8 100%);
+  transition: transform 0.3s ease;
+}
+
+.detail-image-container:hover {
+  transform: scale(1.02);
+}
+
+.detail-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Tarjeta de información básica */
+.detail-basic-info {
+  margin-top: 25px;
+  background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%);
+  padding: 25px;
+  border-radius: 15px;
+  border: 3px solid #87ceeb;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.detail-info-item {
+  margin: 12px 0;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.detail-info-label {
+  font-weight: 800;
+  color: #2c5aa0;
+  min-width: 100px;
+}
+
+.detail-info-value {
+  color: #333;
+  font-weight: 600;
+}
+
+/* Badge de estado */
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.9em;
+  font-weight: 700;
+}
+
+.status-alive {
+  background-color: #4caf50;
+  color: white;
+}
+
+.status-dead {
+  background-color: #f44336;
+  color: white;
+}
+
+.status-unknown {
+  background-color: #9e9e9e;
+  color: white;
+}
+
+/* Columna derecha - Frases y descripción */
+.detail-right-column {
+  flex: 1 1 500px;
+}
+
+/* Tarjeta de frases célebres */
+.detail-phrases-card {
+  background: linear-gradient(135deg, #fff9e6 0%, #fffef0 100%);
+  border-left: 6px solid #ff6b6b;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.detail-section-title {
+  color: #ff6b6b;
+  font-size: 1.4em;
+  font-weight: 800;
+  margin: 0 0 15px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.detail-phrases-text {
+  font-style: italic;
+  font-size: 1.05em;
+  line-height: 1.8;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Tarjeta de descripción */
+.detail-description-card {
+  background: linear-gradient(135deg, #f0f8ff 0%, #e8f4f8 100%);
+  border-left: 6px solid #2c5aa0;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.detail-description-card .detail-section-title {
+  color: #2c5aa0;
+}
+
+.detail-description-text {
+  font-size: 1.05em;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* Estados de carga y error */
+.detail-loading,
+.detail-error,
+.detail-not-found {
+  padding: 60px 20px;
+  text-align: center;
+  font-size: 1.3em;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-loading {
+  color: #2c5aa0;
+  font-weight: 600;
+}
+
+.detail-error {
+  color: #f44336;
+  font-weight: 600;
+}
+
+.detail-not-found {
+  color: #666;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .detail-header {
+    padding: 30px 20px;
+  }
+  
+  .detail-title {
+    font-size: 1.8em;
+  }
+  
+  .detail-content {
+    padding: 25px 20px;
+  }
+  
+  .detail-layout {
+    gap: 25px;
+  }
+  
+  .detail-left-column {
+    max-width: 100%;
+  }
+}
